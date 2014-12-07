@@ -1,0 +1,50 @@
+<% include partials/header %>   
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="<%= movie.Poster %>" alt="">
+            </div>
+            <div class="col-md-8">
+                <h1><%= movie.Title %></h1>
+                <%= movie.Year %><br>
+                <%= movie.Rated %><br>
+                <%= movie.Released %><br>
+                <%= movie.Runtime %><br>
+                <%= movie.Genre %><br>
+                <%= movie.Director %><br>
+                <%= movie.Writer %><br>
+                <%= movie.Actors %><br>
+                <%= movie.Plot %><br>
+                <%= movie.Language %><br>
+                <%= movie.Country %><br>
+                <%= movie.Awards %><br>
+                <%= movie.Poster %><br>
+                <%= movie.Metascore %><br>
+            </div>
+        </div>
+        <div>
+            
+            <%= movie.imdbRating %><br>
+            <%= movie.imdbVotes %><br>
+            <%= movie.imdbID %><br>
+            <%= movie.Type %><br>
+            <%= movie.tomatoMeter %><br>
+            <%= movie.tomatoImage %><br>
+            <%= movie.tomatoRating %><br>
+            <%= movie.tomatoReviews %><br>
+            <%= movie.tomatoFresh %><br>
+            <%= movie.tomatoRotten %><br>
+            <%= movie.tomatoConsensus %><br>
+            <%= movie.tomatoUserMeter %><br>
+            <%= movie.tomatoUserRating %><br>
+            <%= movie.tomatoUserReviews %><br>
+            <%= movie.DVD %><br>
+            <%= movie.BoxOffice %><br>
+            <%= movie.Production %><br>
+            <%= movie.Website %><br>
+            <%= movie.Response %><br>
+        </div>
+    </div>
+
+<% include partials/footer %>   
