@@ -1,0 +1,23 @@
+<% include partials/header %>   
+
+    <div class="container">
+        <p>Results: </p>
+        <%  if (typeof movies !== "undefined") { %>
+        <ul>
+        <%
+                for ( var i = 0 ; i < movies.length ; i++ ) { 
+                    if (movies[i].Type == "movie") {
+        %>
+            <li>
+                <a href="detail/<%= movies[i]['imdbID'] %>"><%= movies[i]['Title'] %></a>
+            </li>
+        <%          }; 
+                };
+        %>
+        </ul>
+        <%  } else { %>
+        <p class="lead">You have no movies on your "Saved" list.</p>
+        <%  } %>
+    </div>
+
+<% include partials/footer %>
