@@ -1,7 +1,6 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var request = require('request');
-
+var express     = require('express')
+  , bodyParser  = require('body-parser')
+  , request     = require('request');
 
 app = express();
 
@@ -10,7 +9,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
 
-// root route
+// RootRoute!
 app.get("/", function(req, res) {
     res.render('search')
 });
@@ -41,6 +40,12 @@ app.get("/detail/:id", function(req, res) {
         };
     });
 });
+
+// 'saved' route
+app.get("/saved", function(req, res) {
+    res.render("saved");
+})
+
 
 // use 'nodemon' in the app dir to start server.
 app.listen(3001);
