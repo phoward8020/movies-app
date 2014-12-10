@@ -1,23 +1,31 @@
 <% include partials/header %>   
 
     <div class="container">
-        <p>Results: </p>
-        <%  if (typeof movies !== "undefined") { %>
-        <ul>
-        <%
-                for ( var i = 0 ; i < movies.length ; i++ ) { 
-                    if (movies[i].Type == "movie") {
-        %>
+        <p>Saved Movies: </p>
+
+        <%  if (returnData.length === 0) { %>
+            <p class="lead">You have no movies on your "Saved" list.</p>
+        <%  } else { %>
+            <ul>
+            <%
+                for ( var i = 0 ; i < returnData.length ; i++ ) { 
+            %>
             <li>
-                <a href="detail/<%= movies[i]['imdbID'] %>"><%= movies[i]['Title'] %></a>
+                <a href="detail/<%= returnData[i]['imdbCode'] %>"><%= returnData[i]['title'] %></a>
+                <form action="/deleteFromList" method="post">
+                    <input type="submit" value="Remove From List">
+                    <input type="hidden" value=<%= returnData[i]['id'] %>>
+                </form>
             </li>
-        <%          }; 
+        <% 
                 };
         %>
         </ul>
-        <%  } else { %>
-        <p class="lead">You have no movies on your "Saved" list.</p>
+        
+        
         <%  } %>
+
+
     </div>
 
 <% include partials/footer %>

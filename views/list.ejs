@@ -10,6 +10,14 @@
         %>
             <li>
                 <a href="detail/<%= movies[i]['imdbID'] %>"><%= movies[i]['Title'] %></a>
+                <p><%= movies[i]['Year'] %></p>
+                <p><%= movies[i]['imdbID'] %></p>
+                <form action="/addToFavorites" method="post">
+                    <input type="submit" value="Add to Favorites">
+                    <input type="hidden" name="title"  value="<%= movies[i]['Title'] %>">
+                    <input type="hidden" name="year"   value="<%= movies[i]['Year'] %>">
+                    <input type="hidden" name="imdbID" value="<%= movies[i]['imdbID'] %>">
+                </form>
             </li>
         <%          }; 
                 };

@@ -9,6 +9,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
 
+var db = require("./models/index.js");
+
 // RootRoute!
 app.get("/", function(req, res) {
     res.render('search')
@@ -43,9 +45,30 @@ app.get("/detail/:id", function(req, res) {
 
 // 'saved' route
 app.get("/saved", function(req, res) {
-    res.render("saved");
+    db.Favorite.findAll().done(function(err, returnData) {
+        // res.send({'returnData':returnData});
+        res.render('saved', {'returnData':returnData});
+    })
 })
 
+app.post("/addToFavorites", function(req, res) {
+    db.Favorite.create({ 
+        title: req.body.title, 
+        year: req.body.year, 
+        imdbCode: req.body.imdbID 
+    }).done(function(err, newDbRecord){
+        if (err) {
+            throw err;
+        }
+        res.redirect("saved");
+    })
+})
+
+app.delete("/saved", functions(req,res) {
+    db.Favorite.destroy({where:{id:req.params.id}}).then(function(deleteCount){
+        res.send(deleteCount);
+    })
+};
 
 // use 'nodemon' in the app dir to start server.
 app.listen(3001);
